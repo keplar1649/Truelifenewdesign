@@ -932,6 +932,15 @@ body.page-loaded .hero .inner{opacity:1; transform:none; transition:transform .7
 @media(max-width: 1024px){.services-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width: 720px){.services-grid{grid-template-columns:1fr}}
 
+/* FAQ */
+.faq-list{display:grid; gap:14px; width:min(900px, 100%); margin:0 auto}
+.faq-item{border:1px solid #e8ecee; border-radius:12px; background:#fff; box-shadow:0 8px 22px rgba(0,0,0,.06); overflow:hidden}
+.faq-item summary{cursor:pointer; padding:16px 20px; font-weight:800; color:var(--teal); list-style:none; display:flex; align-items:center; justify-content:space-between}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item[open] summary{color:var(--orange)}
+.faq-answer{padding:0 20px 18px; color:var(--muted); line-height:1.8}
+.faq-answer ul{margin:8px 0 0; padding-left:18px}
+
 /* Footer */
 .footer{background:#0b3e3e; color:#e7f6f6; padding:50px 0}
 .footer a{color:#e7f6f6; text-decoration:none}
