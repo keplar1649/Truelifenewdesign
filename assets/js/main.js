@@ -115,60 +115,117 @@
   // Testimonial Carousel
   const testimonialCarousel = document.querySelector('.testimonial-carousel');
   if (testimonialCarousel) {
-    const slides = document.querySelectorAll('.testimonial-slide');
-    const dots = document.querySelectorAll('.dot');
+    const slides = Array.from(document.querySelectorAll('.testimonial-slide'));
+    const dotsContainer = document.querySelector('.testimonial-dots');
     const prevBtn = document.querySelector('.testimonial-prev');
     const nextBtn = document.querySelector('.testimonial-next');
+    let dots = [];
     let currentSlide = 0;
     const totalSlides = slides.length;
 
-    // Show current slide
+    // Build dots dynamically with progress indicator
+    function buildDots() {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+        dot.setAttribute('tabindex', '0');
+        dot.dataset.index = String(i);
+        
+        // Add progress bar for active dot
+        const progress = document.createElement('span');
+        progress.className = 'dot-progress';
+        dot.appendChild(progress);
+        
+        dotsContainer.appendChild(dot);
+      });
+      dots = Array.from(dotsContainer.querySelectorAll('.dot'));
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          showSlide(index);
+          restartAutoplay();
+        });
+        dot.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            showSlide(index);
+            restartAutoplay();
+          }
+        });
+      });
+    }
+
+    // Update slide visibility and ARIA
     function showSlide(index) {
-      // Hide all slides
-      slides.forEach(slide => slide.classList.remove('active'));
-      dots.forEach(dot => dot.classList.remove('active'));
-      
-      // Show current slide and update dot
-      slides[index].classList.add('active');
-      dots[index].classList.add('active');
-      currentSlide = index;
+      currentSlide = (index + totalSlides) % totalSlides;
+      slides.forEach((slide, i) => {
+        const active = i === currentSlide;
+        slide.classList.toggle('active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+      if (dots.length) {
+        dots.forEach((dot, i) => {
+          const active = i === currentSlide;
+          dot.classList.toggle('active', active);
+          dot.setAttribute('aria-selected', active ? 'true' : 'false');
+          
+          // Reset progress animation
+          const progress = dot.querySelector('.dot-progress');
+          if (progress) {
+            progress.style.animation = 'none';
+            setTimeout(() => {
+              progress.style.animation = active ? 'dotProgress 5s linear' : 'none';
+            }, 10);
+          }
+        });
+      }
     }
 
-    // Next slide
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      showSlide(currentSlide);
-    }
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
 
-    // Previous slide
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      showSlide(currentSlide);
-    }
+    // Initialize
+    buildDots();
+    // Ensure first slide ARIA state
+    slides.forEach((s, i) => s.setAttribute('aria-hidden', i === 0 ? 'false' : 'true'));
+    showSlide(0);
 
     // Event listeners
-    nextBtn?.addEventListener('click', nextSlide);
-    prevBtn?.addEventListener('click', prevSlide);
-
-    // Dot navigation
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        showSlide(index);
-      });
+    nextBtn?.addEventListener('click', () => {
+      nextSlide();
+      restartAutoplay();
+    });
+    prevBtn?.addEventListener('click', () => {
+      prevSlide();
+      restartAutoplay();
     });
 
     // Auto-advance slides every 5 seconds
     let slideInterval = setInterval(nextSlide, 5000);
+    
+    function restartAutoplay() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 5000);
+    }
 
     // Pause auto-advance on hover
     testimonialCarousel.addEventListener('mouseenter', () => {
       clearInterval(slideInterval);
+      // Pause progress animation
+      const activeDot = dotsContainer?.querySelector('.dot.active .dot-progress');
+      if (activeDot) activeDot.style.animationPlayState = 'paused';
     });
 
     // Resume auto-advance when mouse leaves
     testimonialCarousel.addEventListener('mouseleave', () => {
-      clearInterval(slideInterval);
-      slideInterval = setInterval(nextSlide, 5000);
+      restartAutoplay();
+      // Resume progress animation
+      const activeDot = dotsContainer?.querySelector('.dot.active .dot-progress');
+      if (activeDot) activeDot.style.animationPlayState = 'running';
     });
 
     // Keyboard navigation
@@ -177,7 +234,28 @@
         prevSlide();
       } else if (e.key === 'ArrowRight') {
         nextSlide();
+      } else if (e.key === 'Home') {
+        showSlide(0);
+      } else if (e.key === 'End') {
+        showSlide(totalSlides - 1);
       }
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    testimonialCarousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    testimonialCarousel.addEventListener('touchmove', (e) => {
+      touchEndX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    testimonialCarousel.addEventListener('touchend', () => {
+      const dx = touchEndX - touchStartX;
+      if (Math.abs(dx) > 40) {
+        if (dx < 0) nextSlide(); else prevSlide();
+      }
+      touchStartX = touchEndX = 0;
     });
   }
 
