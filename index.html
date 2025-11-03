@@ -7,6 +7,7 @@
   <link rel="icon" href="images/favicon.ico" />
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
   <link rel="manifest" href="images/site.webmanifest" />
+  <link rel="preload" as="image" href="images/Newslider1.jpg" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <meta name="description" content="DHA-licensed home healthcare in Dubai & UAE: home nursing, physiotherapy at home, speech therapy, occupational therapy and doctor home visits." />
   <link rel="canonical" href="https://truelifehomehealth.ae/" />
@@ -54,7 +55,7 @@
   <header class="header transparent">
     <div class="container navbar">
       <a class="brand" href="index.html" aria-label="TrueLife Home Health">
-        <img src="images/logo1.jpg" alt="TrueLife logo" />
+        <img src="images/logo1.jpg" alt="TrueLife logo" loading="eager" decoding="async" />
         <span class="brand-text">TrueLife Home Health</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
@@ -86,7 +87,7 @@
   <!-- Hero Carousel -->
   <section class="hero" aria-label="Featured">
     <div class="slide active">
-      <img class="bg" src="images/Newslider1.jpg" alt="Caring nurse at home" />
+      <img class="bg" src="images/Newslider1.jpg" alt="Caring nurse at home" fetchpriority="high" loading="eager" decoding="async" />
       <div class="container content">
         <div class="inner">
           <h1 class="section-title" style="color:#fff">Compassionate Care, Right at Home</h1>
@@ -98,7 +99,7 @@
       </div>
     </div>
     <div class="slide">
-      <img class="bg" src="images/slider 3 new.jpg" alt="Therapy and rehabilitation support" />
+      <img class="bg" src="images/slider 3 new.jpg" alt="Therapy and rehabilitation support" loading="lazy" decoding="async" />
       <div class="container content">
         <div class="inner">
           <h2 class="section-title" style="color:#fff">Rehab & Therapy You Can Trust</h2>
@@ -110,7 +111,7 @@
       </div>
     </div>
     <div class="slide">
-      <img class="bg" src="images/Slider 3 personalized plan.jpg" alt="Family with caregiver at home" />
+      <img class="bg" src="images/Slider 3 personalized plan.jpg" alt="Family with caregiver at home" loading="lazy" decoding="async" />
       <div class="container content">
         <div class="inner">
           <h2 class="section-title" style="color:#fff">Personalized Plans, Proven Outcomes</h2>
@@ -131,17 +132,17 @@
       <p class="section-sub reveal from-bottom" style="--reveal-delay:.1s">Convenient, patient-focused outcomes combining clinical expertise with compassionate support.</p>
       <div class="innovative-grid">
         <div class="innovative-card reveal from-left" style="--reveal-delay:.2s">
-          <img src="images/proactive monitoring.jpg" alt="Remote monitoring" />
+          <img src="images/proactive monitoring.jpg" alt="Remote monitoring" loading="lazy" decoding="async" />
           <h3>Proactive Monitoring</h3>
           <p>Regular vitals tracking and wellness checks to catch issues early and reduce hospital readmissions.</p>
         </div>
         <div class="innovative-card reveal from-bottom" style="--reveal-delay:.3s">
-          <img src="images/personalized plan.jpg" alt="Personalized plans" />
+          <img src="images/personalized plan.jpg" alt="Personalized plans" loading="lazy" decoding="async" />
           <h3>Personalized Care Plans</h3>
           <p>Care tailored to your goals, lifestyle, and preferences—reassessed frequently as needs evolve.</p>
         </div>
         <div class="innovative-card reveal from-right" style="--reveal-delay:.4s">
-          <img src="images/Coordinated.jpg" alt="Coordinated team" />
+          <img src="images/Coordinated.jpg" alt="Coordinated team" loading="lazy" decoding="async" />
           <h3>Coordinated Team</h3>
           <p>Interdisciplinary coordination across nursing, therapy, and specialists for seamless at‑home support.</p>
         </div>
@@ -161,7 +162,7 @@
         </div>
       </div>
       <div class="image-overlay reveal from-right" style="--reveal-delay:.3s">
-        <img src="images/slider 1 compassionate care.jpg" alt="About TrueLife" />
+        <img src="images/About us hero.jpg" alt="About TrueLife" loading="lazy" decoding="async" />
         <div class="overlay">
           <div>
             <h3 class="m-0">Trusted, Accredited, Caring</h3>
@@ -228,25 +229,25 @@
       <p class="section-sub reveal from-bottom" style="--reveal-delay:.1s">Comprehensive care delivered safely at home.</p>
       <div class="services-grid">
         <div class="service reveal from-bottom" style="--reveal-delay:.2s">
-          <img src="images/doctor-consultation.png" alt="Doctor consultation icon" width="52" />
+          <img src="images/doctor-consultation.png" alt="Doctor consultation icon" width="52" loading="lazy" decoding="async" />
           <h4>Doctor's Consultation</h4>
           <p>On‑call physicians for ongoing guidance and coordination.</p>
           <a class="btn mt-2" href="doctor.html">Read More</a>
         </div>
         <div class="service reveal from-bottom" style="--reveal-delay:.3s">
-          <img src="images/Physiotherapy.png" alt="Physiotherapy icon" width="52" />
+          <img src="images/Physiotherapy.png" alt="Physiotherapy icon" width="52" loading="lazy" decoding="async" />
           <h4>Physiotherapy</h4>
           <p>Rehabilitation plans to restore strength, mobility, and function.</p>
           <a class="btn mt-2" href="physio.html">Read More</a>
         </div>
         <div class="service reveal from-bottom" style="--reveal-delay:.4s">
-          <img src="images/speech-therapy.png" alt="Speech therapy icon" width="52" />
+          <img src="images/speech-therapy.png" alt="Speech therapy icon" width="52" loading="lazy" decoding="async" />
           <h4>Speech Therapy</h4>
           <p>Communication, speech, and swallowing therapies for all ages.</p>
           <a class="btn mt-2" href="speech.html">Read More</a>
         </div>
         <div class="service reveal from-bottom" style="--reveal-delay:.5s">
-          <img src="images/Occupational Therapy.png" alt="Occupational therapy icon" width="52" />
+          <img src="images/Occupational Therapy.png" alt="Occupational therapy icon" width="52" loading="lazy" decoding="async" />
           <h4>Occupational Therapy</h4>
           <p>Daily living skills training and adaptive strategies at home.</p>
           <a class="btn mt-2" href="ot.html">Read More</a>
@@ -258,7 +259,7 @@
           <a class="btn mt-2" href="laboratory-tests.html">Read More</a>
         </div>
         <div class="service reveal from-bottom" style="--reveal-delay:.7s">
-          <img src="images/Specialized Care.png" alt="Specialized nursing icon" width="42" />
+          <img src="images/Specialized Care.png" alt="Specialized nursing icon" width="42" loading="lazy" decoding="async" />
           <h4>Specialized Nursing Care</h4>
           <p>Post‑surgical, wound, tracheostomy, catheter care and more.</p>
           <a class="btn mt-2" href="nursing.html">Read More</a>
@@ -446,6 +447,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-  <script src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>

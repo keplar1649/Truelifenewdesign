@@ -462,6 +462,11 @@ body.page-loaded .hero .inner{opacity:1; transform:none; transition:transform .7
 /* Make the banner tall enough to be a clear divider */
 .section#services-banner{padding:110px 0; min-height:44vh}
 
+/* Disable expensive fixed backgrounds on mobile/tablet to improve scroll performance */
+@media (max-width: 1024px){
+  .section.parallax::before{background-attachment: scroll;}
+}
+
 /* Banner CTA */
 /* ========== TESTIMONIAL SECTION - Modern Design ========== */
 #testimonials {
