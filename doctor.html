@@ -10,9 +10,13 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <meta name="description" content="Doctor home visit in UAE: in‑home or video consultations for diagnosis, prescriptions and care coordination." />
   <link rel="canonical" href="https://truelifehomehealth.ae/doctor.html" />
+  <link rel="alternate" href="https://truelifehomehealth.ae/doctor.html" hreflang="en-AE" />
+  <link rel="alternate" href="https://truelifehomehealth.ae/doctor.html" hreflang="x-default" />
+  <link rel="preload" as="image" href="images/doctor consultation.jpg" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://truelifehomehealth.ae/doctor.html" />
+  <meta property="og:locale" content="en_AE" />
   <meta property="og:title" content="Doctor Home Visit in UAE | Home Doctor Consultation | TrueLife" />
   <meta property="og:description" content="Home doctor visits and teleconsultations for timely medical care across the UAE." />
   <meta property="og:image" content="https://truelifehomehealth.ae/images/24X7%20nursing.png" />
@@ -68,7 +72,7 @@
   <main>
     <section class="hero" style="height:42vh; min-height:320px">
       <div class="slide active">
-        <img class="bg" src="images/doctor consultation.jpg" alt="Doctor Consultation" />
+        <img class="bg" src="images/doctor consultation.jpg" alt="Doctor Consultation" fetchpriority="high" decoding="async" />
         <div class="container content">
           <div class="inner">
             <h1 class="section-title" style="color:#fff">Doctor's Consultation</h1>
@@ -178,6 +182,6 @@
   </a>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>
