@@ -53,7 +53,7 @@ img{max-width:100%; display:block}
 /* Top Bar with Tagline */
 .top-bar {
   background: var(--teal);
-  padding: 6px 0;
+  padding: 8px 0;
   color: white;
   font-size: 14px;
   position: fixed;
@@ -65,24 +65,68 @@ img{max-width:100%; display:block}
 
 .top-bar .tagline {
   display: flex;
-  justify-content: center;
-  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  text-transform: none;
+  flex-wrap: wrap;
+}
+
+.top-bar-social {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.top-bar-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.top-bar-social a,
+.top-bar-contact a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   text-transform: uppercase;
 }
 
-.top-bar .tagline span {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
+.top-bar-social a:hover,
+.top-bar-contact a:hover {
+  opacity: 0.85;
 }
 
-.top-bar .tagline span:not(:last-child)::after {
-  content: '•';
-  position: absolute;
-  right: -20px;
-  color: rgba(255, 255, 255, 0.5);
+.top-bar svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.top-bar-social span,
+.top-bar-contact span {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+  .top-bar .tagline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .top-bar-contact {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 /* Brand Text Styling */
