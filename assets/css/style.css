@@ -32,7 +32,7 @@ html{scroll-behavior:smooth; overflow-x:hidden}
 body{
   margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
   color:var(--text);
-  padding-top:72px; /* prevent content hidden behind fixed header */
+  padding-top:104px; /* prevent content hidden behind fixed header + top bar */
   opacity:0; transition:opacity .6s ease; /* page-load fade */
   overflow-x:hidden;
   width:100%;
@@ -56,6 +56,11 @@ img{max-width:100%; display:block}
   padding: 6px 0;
   color: white;
   font-size: 14px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
 }
 
 .top-bar .tagline {
@@ -226,7 +231,8 @@ img{max-width:100%; display:block}
 
 @media (max-width: 768px) {
   .top-bar {
-    display: none;
+    padding: 4px 0;
+    font-size: 12px;
   }
   
   .nav-links {
@@ -268,7 +274,7 @@ body.page-loaded .hero .inner{opacity:1; transform:none; transition:transform .7
 .btn-outline:hover{background:var(--orange); color:#fff; border-color:var(--orange); transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.15);}
 
 /* Header / Navbar */
-.header{position:fixed; inset:0 0 auto 0; height:72px; display:flex; align-items:center; z-index:1000; background:#fff; box-shadow:0 4px 16px rgba(0,0,0,.06); width:100%; max-width:100vw; overflow:hidden}
+.header{position:fixed; top:32px; left:0; right:0; height:72px; display:flex; align-items:center; z-index:1000; background:#fff; box-shadow:0 4px 16px rgba(0,0,0,.06); width:100%; max-width:100vw; overflow:hidden}
 .navbar{display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; padding:0 20px; max-width:100%}
 .brand{display:flex; align-items:center; gap:10px; text-decoration:none}
 .brand img{height:40px; width:auto}
@@ -330,7 +336,7 @@ body.page-loaded .hero .inner{opacity:1; transform:none; transition:transform .7
   .navbar{padding:0 5px; gap:8px}
   .brand{z-index:1102; flex-shrink:0}
   .brand img{height:36px}
-  .nav-links{position:fixed; top:72px; right:0; left:0; background:#fff; flex-direction:column; padding:16px; transform:translateY(-110%); transition:transform .3s ease; box-shadow:0 20px 30px rgba(0,0,0,.08); visibility:hidden; pointer-events:none; z-index:1100; width:100%; max-width:100vw}
+  .nav-links{position:fixed; top:104px; right:0; left:0; background:#fff; flex-direction:column; padding:16px; transform:translateY(-110%); transition:transform .3s ease; box-shadow:0 20px 30px rgba(0,0,0,.08); visibility:hidden; pointer-events:none; z-index:1100; width:100%; max-width:100vw}
   .nav-links a{color:var(--teal); width:100%; text-align:center; padding:12px 0}
   .nav-links.active{transform:translateY(0); visibility:visible; pointer-events:auto}
   .nav-toggle{display:block !important; visibility:visible !important; opacity:1 !important; margin-left:auto; flex-shrink:0}
