@@ -415,14 +415,14 @@
                 <span style="font-size:20px">📞</span>
                 <div>
                   <p style="margin:0; font-size:13px; color:var(--muted); font-weight:600">Phone</p>
-                  <a href="tel:045726692" style="color:var(--teal); font-weight:600; text-decoration:none; font-size:16px">04-5726692</a>
+                  <a href="tel:045726692" onclick="return gtag_report_conversion('tel:045726692');" style="color:var(--teal); font-weight:600; text-decoration:none; font-size:16px">04-5726692</a>
                 </div>
               </div>
               <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px; padding:10px; background:#f8fafa; border-radius:10px">
                 <span style="font-size:20px">📱</span>
                 <div>
                   <p style="margin:0; font-size:13px; color:var(--muted); font-weight:600">Mobile</p>
-                  <a href="tel:0589477102" style="color:var(--teal); font-weight:600; text-decoration:none; font-size:16px">0589477102</a>
+                  <a href="tel:0589477102" onclick="return gtag_report_conversion('tel:0589477102');" style="color:var(--teal); font-weight:600; text-decoration:none; font-size:16px">0589477102</a>
                 </div>
               </div>
               <div style="display:flex; align-items:center; gap:12px; padding:10px; background:#f8fafa; border-radius:10px">
@@ -474,31 +474,38 @@
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- Footer (same as homepage) -->
-  <footer class="footer" id="contact">
-    <div class="container">
-      <div class="cols">
-        <div>
-          <h4>Company Info</h4>
-          <p>TrueLife Healthcare is dedicated to providing compassionate and personalized care in the comfort of your home — because your well‑being is our priority.</p>
+    <!-- Footer (same as homepage) -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="cols">
+          <div>
+            <h4>Company Info</h4>
+            <p>TrueLife Healthcare is dedicated to providing compassionate and personalized care in the comfort of your home — because your well‑being is our priority.</p>
+          </div>
+          <div>
+            <h4>Contact Us</h4>
+            <ul>
+              <li>Office No. 314, 3rd Floor, Al Nasriya Building, Al Qusais, Dubai, UAE</li>
+              <li>Email: <a href="mailto:info@truelifehomehealth.ae">info@truelifehomehealth.ae</a></li>
+              <li>Phone: <a href="tel:+97145726692" onclick="return gtag_report_conversion('tel:+97145726692');">+9714‑5726692</a></li>
+              <li>Mobile: <a href="tel:+971589477102" onclick="return gtag_report_conversion('tel:+971589477102');">+97158-9477102</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#services">Services</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h4>Contact Us</h4>
-          <ul>
-            <li>Office No. 314, 3rd Floor, Al Nasriya Building, Al Qusais, Dubai, UAE</li>
-            <li>Email: <a href="mailto:info@truelifehomehealth.ae">info@truelifehomehealth.ae</a></li>
-            <li>Phone: <a href="tel:+97145726692">+9714‑5726692</a></li>
-            <li>Mobile: <a href="tel:+971589477102">+97158-9477102</a></li>
-          </ul>
+        <div class="footer-bottom">
+          <span> <span id="year"></span> TrueLife Healthcare. All rights reserved.</span>
+          <span></span>
         </div>
-        <div>
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="about.html">About Us</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
