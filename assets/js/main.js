@@ -308,6 +308,74 @@
     requestTick();
   }
 
+  function linkifyParagraphs(){
+    const linkSpecs = [
+      { href: 'physio.html', patterns: [/(\bphysiotherapy\b)/ig, /(\bphysio\b)/ig] },
+      { href: 'speech.html', patterns: [/(\bspeech therapy\b)/ig, /(\bspeech therapist\b)/ig] },
+      { href: 'ot.html', patterns: [/(\boccupational therapy\b)/ig, /(\boccupational therapist\b)/ig, /(\bOT\b)/g] },
+      { href: 'nursing.html', patterns: [/(\bhome nursing\b)/ig, /(\bnursing care\b)/ig, /(\bnursing\b)/ig] },
+      { href: 'doctor.html', patterns: [/(\bdoctor's consultation\b)/ig, /(\bdoctor consultation\b)/ig, /(\bdoctor home visit\b)/ig] },
+      { href: 'laboratory-tests.html', patterns: [/(\blaboratory tests\b)/ig, /(\blab tests\b)/ig, /(\bblood tests\b)/ig] },
+      { href: 'services.html', patterns: [/(\bhome healthcare services\b)/ig] }
+    ];
+
+    function getBestMatch(text){
+      let best = null;
+      for(const spec of linkSpecs){
+        for(const pattern of spec.patterns){
+          pattern.lastIndex = 0;
+          const m = pattern.exec(text);
+          if(!m) continue;
+          const start = m.index;
+          const end = start + m[0].length;
+          if(!best || start < best.start){
+            best = { start, end, label: m[0], href: spec.href };
+          }
+        }
+      }
+      return best;
+    }
+
+    const paragraphs = Array.from(document.querySelectorAll('p'));
+    for(const p of paragraphs){
+      const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT, {
+        acceptNode(node){
+          if(!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          const parentEl = node.parentElement;
+          if(!parentEl) return NodeFilter.FILTER_REJECT;
+          if(parentEl.closest('a')) return NodeFilter.FILTER_REJECT;
+          if(parentEl.closest('script, style, noscript')) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      const textNodes = [];
+      while(walker.nextNode()) textNodes.push(walker.currentNode);
+
+      for(const node of textNodes){
+        let text = node.nodeValue;
+        let match = getBestMatch(text);
+        if(!match) continue;
+
+        const frag = document.createDocumentFragment();
+        while(match){
+          if(match.start > 0){
+            frag.appendChild(document.createTextNode(text.slice(0, match.start)));
+          }
+          const a = document.createElement('a');
+          a.href = match.href;
+          a.textContent = match.label;
+          frag.appendChild(a);
+
+          text = text.slice(match.end);
+          match = getBestMatch(text);
+        }
+        if(text) frag.appendChild(document.createTextNode(text));
+        node.parentNode.replaceChild(frag, node);
+      }
+    }
+  }
+
   // Brochure Modal
   // Create and inject a reusable modal that asks for Name, Email, Phone and lets the user download the brochure.
   function createBrochureModal(){
@@ -423,8 +491,12 @@
 
   // Initialize brochure modal once DOM is ready
   if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', createBrochureModal);
+    document.addEventListener('DOMContentLoaded', ()=>{
+      linkifyParagraphs();
+      createBrochureModal();
+    });
   } else {
+    linkifyParagraphs();
     createBrochureModal();
   }
 })();
