@@ -309,6 +309,7 @@
   }
 
   function linkifyParagraphs(){
+    const currentPath = (window.location.pathname || '').split('/').pop().split('?')[0].split('#')[0] || 'index.html';
     const linkSpecs = [
       { href: 'physio.html', patterns: [/(\bphysiotherapy\b)/ig, /(\bphysio\b)/ig] },
       { href: 'speech.html', patterns: [/(\bspeech therapy\b)/ig, /(\bspeech therapist\b)/ig] },
@@ -322,6 +323,7 @@
     function getBestMatch(text){
       let best = null;
       for(const spec of linkSpecs){
+        if(spec.href === currentPath) continue;
         for(const pattern of spec.patterns){
           pattern.lastIndex = 0;
           const m = pattern.exec(text);
@@ -336,7 +338,7 @@
       return best;
     }
 
-    const paragraphs = Array.from(document.querySelectorAll('p'));
+    const paragraphs = Array.from(document.querySelectorAll('main p'));
     for(const p of paragraphs){
       const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT, {
         acceptNode(node){
@@ -364,6 +366,7 @@
           }
           const a = document.createElement('a');
           a.href = match.href;
+          a.className = 'content-link';
           a.textContent = match.label;
           frag.appendChild(a);
 

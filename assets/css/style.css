@@ -57,6 +57,18 @@ img{max-width:100%; display:block}
 .section-title{font-size:32px; margin:0 0 16px; color:var(--teal); font-weight:800}
 .section-sub{color:var(--muted); margin:0 0 32px}
 
+ main a.content-link{
+  color:#000;
+  font-weight:700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+ }
+ main a.content-link:hover{
+  color:#000;
+  text-decoration-color: var(--orange);
+ }
+
 /* Top Bar with Tagline */
 .top-bar {
   background: var(--teal);

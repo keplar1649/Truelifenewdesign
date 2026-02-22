@@ -193,7 +193,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About us</a>
         <a href="services.html">Services</a>
-        <a class="active" href="#">News and events</a>
+        <a class="active" href="news.html">News and events</a>
         <a href="contact.html">Contact us</a>
         <a href="#" class="btn btn-brochure" id="downloadBrochure">
           <span>Brochure</span>
@@ -344,6 +344,22 @@
                   It's moments like these that truly show the power of community. We are committed to providing the same level of professional and compassionate care with our quality home health services in Dubai.
                 </p>
               </div>
+            </div>
+
+            <div class="innovative-card reveal from-bottom" style="--reveal-delay:.9s; padding:24px; transition:transform 0.3s ease, box-shadow 0.3s ease">
+              <h4 style="font-size:20px; color:var(--teal); margin-bottom:12px">When Healthcare Meets Community, Real Care Happens ❤️</h4>
+              <p style="color:var(--muted); font-size:14px; line-height:1.6; margin:0">
+                We were honored to support our community with free health screenings, physiotherapy checks, and doctor consultations plus wellness giveaways because early care changes lives.<br><br>
+                At TrueLife Home Healthcare, we don’t just treat conditions.<br>
+                We support families, caregivers, and loved ones who deserve trusted medical care at home.<br><br>
+                ✔️ Elderly Care<br>
+                ✔️ Home Nursing<br>
+                ✔️ Physiotherapy at Home<br>
+                ✔️ Doctor Home Visits<br><br>
+                You can still access professional care — right at your doorstep.<br>
+                📲 Message us on WhatsApp to book your service today<br>
+                📞 058 947 7102
+              </p>
             </div>
           </div>
         </div>
@@ -532,7 +548,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="news.html">News & Events</a></li>
           </ul>
         </div>
       </div>
@@ -550,5 +566,17 @@
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="assets/js/main.js"></script>
+  <script>
+  window.addEventListener('load', function() {
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('[href*="tel:"]')) {
+        gtag('event', 'conversion', {'send_to': 'AW-17860262725/MyQiCOiwtPkbEMX2t8RC'});
+      }
+      if (e.target.closest('[href*="wa.me"]')) {
+        gtag('event', 'conversion', {'send_to': 'AW-17860262725/ymAPCOuwtPkbEMX2t8RC'});
+      }
+    });
+  });
+  </script>
 </body>
 </html>
