@@ -58,15 +58,19 @@ img{max-width:100%; display:block}
 .section-sub{color:var(--muted); margin:0 0 32px}
 
  main a.content-link{
-  color:#000;
-  font-weight:700;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
+  color: var(--teal);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(0,128,128,0.35);
+  padding: 0 4px;
+  border-radius: 6px;
+  background: rgba(0,128,128,0.08);
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
  }
  main a.content-link:hover{
-  color:#000;
-  text-decoration-color: var(--orange);
+  color: var(--teal);
+  border-bottom-color: var(--orange);
+  background: rgba(241,128,112,0.16);
  }
 
 /* Top Bar with Tagline */

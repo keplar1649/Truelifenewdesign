@@ -310,20 +310,21 @@
 
   function linkifyParagraphs(){
     const currentPath = (window.location.pathname || '').split('/').pop().split('?')[0].split('#')[0] || 'index.html';
+    if(currentPath === 'services.html') return;
     const linkSpecs = [
-      { href: 'physio.html', patterns: [/(\bphysiotherapy\b)/ig, /(\bphysio\b)/ig] },
-      { href: 'speech.html', patterns: [/(\bspeech therapy\b)/ig, /(\bspeech therapist\b)/ig] },
-      { href: 'ot.html', patterns: [/(\boccupational therapy\b)/ig, /(\boccupational therapist\b)/ig, /(\bOT\b)/g] },
-      { href: 'nursing.html', patterns: [/(\bhome nursing\b)/ig, /(\bnursing care\b)/ig, /(\bnursing\b)/ig] },
-      { href: 'doctor.html', patterns: [/(\bdoctor's consultation\b)/ig, /(\bdoctor consultation\b)/ig, /(\bdoctor home visit\b)/ig] },
-      { href: 'laboratory-tests.html', patterns: [/(\blaboratory tests\b)/ig, /(\blab tests\b)/ig, /(\bblood tests\b)/ig] },
-      { href: 'services.html', patterns: [/(\bhome healthcare services\b)/ig] }
+      { href: 'services.html#physio', patterns: [/(\bphysiotherapy\b)/ig, /(\bphysio\b)/ig] },
+      { href: 'services.html#speech', patterns: [/(\bspeech therapy\b)/ig, /(\bspeech therapist\b)/ig] },
+      { href: 'services.html#services-intro', patterns: [/(\boccupational therapy\b)/ig, /(\boccupational therapist\b)/ig, /(\bOT\b)/g] },
+      { href: 'services.html#nursing', patterns: [/(\bhome nursing\b)/ig, /(\bnursing care\b)/ig, /(\bnursing\b)/ig] },
+      { href: 'services.html#doctor', patterns: [/(\bdoctor's consultation\b)/ig, /(\bdoctor consultation\b)/ig, /(\bdoctor home visit\b)/ig] },
+      { href: 'services.html#laboratory', patterns: [/(\blaboratory tests\b)/ig, /(\blab tests\b)/ig, /(\bblood tests\b)/ig] },
+      { href: 'services.html#services-intro', patterns: [/(\bhome healthcare services\b)/ig] }
     ];
 
     function getBestMatch(text){
       let best = null;
       for(const spec of linkSpecs){
-        if(spec.href === currentPath) continue;
+        if(spec.href.split('#')[0] === currentPath) continue;
         for(const pattern of spec.patterns){
           pattern.lastIndex = 0;
           const m = pattern.exec(text);
